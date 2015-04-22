@@ -27,7 +27,7 @@ $(document).ready(function (){
 		console.log(property, property.propId, property.sqFoot);
 
 
-		var el = "<div><tr><td>Property ID: " + property.propId + "</td><td>" + property.sqFoot + " Sq. Ft. </td><td>$" + property.costPerFoot + "/sq.ft. </td><td><button class='remove'>Remove</button></td></tr></div>";
+		var el = "<div><ul><li>Property ID: " + property.propId + "</li><li>" + property.sqFoot + " Sq. Ft. </li><li>$" + property.costPerFoot + "/sq.ft. </li><li>Total Cost: $" + (property.sqFoot * property.costPerFoot) + " </li><li>Cost per Month: $" + (Math.round(property.sqFoot * property.costPerFoot / 12)) + " </li><button class='remove'>Remove</button></ul></div>";
 
 		$("#propTable").append(el);
 		el = $("#propTable").children().last();
@@ -35,7 +35,7 @@ $(document).ready(function (){
 	});
 
 	$("#propTable").on("click", ".remove", function(){
-		$(this).parent().slideUp(function(){
+		$(this).parent().parent().slideUp(function(){
 			$(this).remove();
 		});
 	});
